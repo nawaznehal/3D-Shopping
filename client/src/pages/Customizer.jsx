@@ -51,7 +51,7 @@ const Customizer = () => {
       // call bnackend to generate AI
       setGeneratingImg(true);
       
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+      const response = await fetch('https://threejs-mod.onrender.com/api/v1/dalle', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -60,6 +60,9 @@ const Customizer = () => {
           prompt,
         })
       });
+
+
+      // 'http://localhost:8080/api/v1/dalle'
 
       // const data = await response.json();
 
