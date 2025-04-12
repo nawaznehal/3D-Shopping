@@ -8,13 +8,18 @@ import { downloadCanvasToImage, reader } from '../config/helpers';
 import { EditorTabs, FilterTabs, DecalTypes} from '../config/constants'
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
- 
+import ModelCanvas from '../canvas/ModelCanvas';
+import ModelSelector from '../components/ModelSelector';
+import { Canvas } from '@react-three/fiber';
+import DecalControl from '../components/DecalControl';
+
 const Customizer = () => {
   const snap = useSnapshot(state);
+  // const [selectedModel, setSelectedModel] = useState(snap.model);
   const [file, setFile] = useState('');
   const [prompt, setPrompt] = useState('');
   const [generatingImg, setGeneratingImg] = useState(false);
-  const [activeEditorTab, setActiveEditorTab] = useState("");
+  const [activeEditorTab, setActiveEditorTab] = useState("decalcontrol");
   const [activeFilterTab, setActiveFilterTab] = useState({
     logoShirt: true,
     stylishShirt:false
@@ -23,6 +28,8 @@ const Customizer = () => {
   //show tab contents depending on the activeTab
   const generateTabContent = () => {
     switch (activeEditorTab) {
+      case 'decalcontrol':
+        return <DecalControl />;
       case 'colorpicker':
         return <ColorPicker/>
       case 'filepicker':
@@ -137,10 +144,28 @@ const Customizer = () => {
     })
   }
 
+//  const handlePositionChange = (type, newPosition) => {
+    
+//     state.updateDecalProperties(type, newPosition, state.decalRotation[type], state.decalScale[type]);
+//   }
+//   const handleRotationChange = (type, newRotation) => {
+//     state.updateDecalProperties(type, state.decalPosition[type], newRotation, state.decalScale[type]);
+//   }
+//   const handleScaleChange = (type, newScale) => {
+//     state.updateDecalProperties(type, state.decalPosition[type], state.decalRotation[type], newScale);
+//   }
   return (
+    <>
+    <ModelSelector/>
+    <Canvas>
+    
+    <ModelCanvas/>
+    </Canvas>
+    
     <AnimatePresence>
       {!snap.intro && (
         <>
+        
           <motion.div
             key="custom"
             className="absolute top-0 left-0 z-10"
@@ -159,6 +184,9 @@ const Customizer = () => {
               </div>
             </div>
           </motion.div>
+          <ModelSelector/>
+          {/* <ModelCanvas /> */}
+          
           <motion.div className='absolute z-10 top-5 right-5' 
             {...fadeAnimation}
           >
@@ -184,9 +212,22 @@ const Customizer = () => {
             ))}
 
           </motion.div>
+          {/* <div className="absolute top-5 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded shadow-md">
+            <select
+              value={snap.model} // The model currently selected
+              onChange={handleModelChange} // Updates model in state
+              className="p-2 border rounded"
+            >
+              <option value="">Select a model</option>
+              <option value="shirt">Shirt</option>
+              <option value="hoodie">Hoodie</option>
+            </select>
+          </div> */}
+
         </>
       )}
     </AnimatePresence>
+    </>
   );
 };
 

@@ -7,7 +7,7 @@ import state from '../store'
 
 const Shirt = () => {
     const snap = useSnapshot(state);
-    const { nodes, materials } = useGLTF('/shirt_baked.glb')
+    const { nodes, materials } = useGLTF('/shirt.glb')
 
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
@@ -27,20 +27,27 @@ const Shirt = () => {
         material={materials.lambert1}
         material-roughness={1}
         dispose={null}
+        scale={1}
+        
         >
           {snap.isFullTexture && (
             <Decal
-              position={[0, 0,0]}
-              rotation={[0,0,0]}
-              scale={1}
+              position={snap.decalPosition.shirt} //it was [0, 0,0], add option to change it from the UI of the app
+              rotation={snap.decalRotation.shirt}
+              scale={snap.decalScale.shirt}
               map={fullTexture}
             />
           )}
           {snap.isLogoTexture && (
             <Decal
-              position={[0, 0.04, 0.15]}
+            position={[0, 0.002, 0.15]}
               rotation={[0,0,0]}
-              scale={0.15}
+              scale={0.17}
+              // position={snap.decalPosition.shirt}
+              // rotation={snap.decalRotation.shirt}
+              // scale={snap.decalScale.shirt} //modify this to change the size of the logo
+              // scale={0.17} //modify this to change the size of the logo
+              // scale={0.15}
               map={logoTexture}
               anisotropy={16}
               // map-anisotropy={16}

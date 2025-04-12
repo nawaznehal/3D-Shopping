@@ -36,7 +36,7 @@ html {
 }
 
 .editortabs-container {
-  @apply glassmorphism w-16 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
+  @apply glassmorphism w-20 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
 }
 
 .filtertabs-container {
@@ -89,4 +89,21 @@ input[type="file"] {
 
 .sketch-picker > div:nth-child(3) {
   display: none !important;
+}
+.decal-control-container {
+  padding: 10px;
+  padding-left: 0%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid red; /* Temporary border for debugging */
+}
+
+.control-group {
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  margin-right: 10px;
+  width: 60px;
 }
