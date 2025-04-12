@@ -26,9 +26,9 @@ const state = proxy( {
     logoDecal: './12.png ',
     fullDecal: './threejs3.png',
 
-    decalPosition: {shirt: [0, 0.0, 0], hoodie: [0, 0.04, 0]},
+    decalPosition: {shirt: [0, 0.005, 0], hoodie: [0, 0.04, 0]},
     decalRotation: {shirt: [0, 0, 0], hoodie: [0, 0, 0]},
-    decalScale: {shirt: 0.51, hoodie: 1},
+    decalScale: {shirt: 1, hoodie: 1},
 
     updateDecalProperties: (type, newPosition, newRotation, newScale) => {
         state.decalPosition[type] = newPosition;
