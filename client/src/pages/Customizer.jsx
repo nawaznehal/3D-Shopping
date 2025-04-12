@@ -12,6 +12,7 @@ import ModelCanvas from '../canvas/ModelCanvas';
 import ModelSelector from '../components/ModelSelector';
 import { Canvas } from '@react-three/fiber';
 import DecalControl from '../components/DecalControl';
+import { Suspense } from 'react';
 
 const Customizer = () => {
   const snap = useSnapshot(state);
@@ -156,11 +157,12 @@ const Customizer = () => {
 //   }
   return (
     <>
-    <ModelSelector/>
-    <Canvas>
-    
-    <ModelCanvas/>
-    </Canvas>
+    <ModelSelector />
+    <Canvas key={snap.model}>
+  <Suspense fallback={null}>
+    <ModelCanvas />
+  </Suspense>
+</Canvas>
     
     <AnimatePresence>
       {!snap.intro && (

@@ -14,9 +14,9 @@ const ModelCanvas = () => {
 
   return (
     <>
-      {snap.model === 'Shirt' && <Shirt />}
-      {snap.model === 'Hoodie' && <Hoodie />}
-    </>
+    {snap.model === 'shirt' && <Shirt key="shirt" />}
+    {snap.model === 'hoodie' && <Hoodie key="hoodie" />}
+  </>
   );
 };
 

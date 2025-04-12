@@ -1,10 +1,14 @@
 import { Canvas } from '@react-three/fiber'
 import { Environment, Center } from '@react-three/drei'
 import Shirt from './Shirt'
+import { useSnapshot } from 'valtio'
 import Backdrop from './Backdrop'
 import CameraRig from './CameraRig'
+import state from '../store'
+import Hoodie from './Hoodie'
 
 const CanvasModel = () => {
+  const snap = useSnapshot(state);
   return (
     <Canvas
       shadows
@@ -17,7 +21,8 @@ const CanvasModel = () => {
       <CameraRig>
         <Backdrop/>
         <Center>
-          <Shirt/>
+        {snap.model === 'shirt' && <Shirt />}
+        {snap.model === 'hoodie' && <Hoodie />}
         </Center>
       </CameraRig>
     </Canvas>

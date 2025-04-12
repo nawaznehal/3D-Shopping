@@ -18,7 +18,7 @@ import { proxy } from "valtio";
 
 
 const state = proxy( {
-    model: 'Shirt', // default model
+    model: 'shirt', // default model
     intro: true,
     color: '#0066cc',
     isLogoTexture: true,

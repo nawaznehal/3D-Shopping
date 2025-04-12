@@ -11,6 +11,10 @@ import { CustomButton } from '../components'
 import ModelCanvas from '../canvas/ModelCanvas';
 import ModelSelector from '../components/ModelSelector';
 import { Canvas } from '@react-three/fiber'
+// import { Canvas } from '@react-three/fiber';
+// import ModelCanvas from '../canvas/ModelCanvas';
+// import ModelSelector from '../components/ModelSelector';
+
 
 const Home = () => {
     const snap = useSnapshot(state);
@@ -54,6 +58,8 @@ const Home = () => {
                 </motion.div>
 
             </motion.div>
+
+           
             </motion.section>
         )}
     </AnimatePresence>

@@ -7,7 +7,7 @@ import state from '../store'
 
 const Hoodie = () => {
     const snap = useSnapshot(state);
-    const { nodes, materials } = useGLTF('/hoodie.glb')
+    const { nodes, materials } = useGLTF('/NewHoodie.glb')
 
     const logoTexture = useTexture(snap.logoDecal);
     const fullTexture = useTexture(snap.fullDecal);
@@ -17,13 +17,15 @@ const Hoodie = () => {
 
     const stateString = JSON.stringify(snap);
     console.log("Hoodie component loaded");
+    console.log(nodes); // Log the structure to see actual names
+
   return (
     <group
       key={stateString}
     >
         <mesh 
         castShadow
-        geometry={nodes.T_Shirt_male.geometry}
+        geometry={nodes.Hoodie_male.geometry}
         material={materials.lambert1}
         material-roughness={1}
         dispose={null}
@@ -31,13 +33,13 @@ const Hoodie = () => {
         
         >
           {snap.isFullTexture && (
-            <Decal
-              position={[0, 0,0]}
-              rotation={[0,0,0]}
-              scale={1}
-              map={fullTexture}
-            />
-          )}
+                      <Decal
+                        position={snap.decalPosition.shirt} //it was [0, 0,0], add option to change it from the UI of the app
+                        rotation={snap.decalRotation.shirt}
+                        scale={snap.decalScale.shirt}
+                        map={fullTexture}
+                      />
+                    )}
           {snap.isLogoTexture && (
             <Decal
               position={[0, 0.04, 0.15]}

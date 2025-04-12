@@ -19,8 +19,8 @@ const ModelSelector = () => {
         onChange={handleChange}
         className="px-3 py-2 bg-white text-black rounded-md shadow-md"
       >
-        <option value="Shirt">Shirt</option>
-        <option value="Hoodie">Hoodie</option>
+        <option value="shirt">Shirt</option>
+        <option value="hoodie">Hoodie</option>
       
       </select>
     </div>
